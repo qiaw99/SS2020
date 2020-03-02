@@ -1,0 +1,4 @@
+# Auswirkung der Informatik(5 LP)
+Diese Veranstaltung behandelt Auswirkungen der Informatik. Sie will ein Verständnis dafür zu wecken, dass und wie Informatiksysteme in vielfältiger Weise in unser privates und professionelles Leben eingreifen und es erheblich prägen. Viele dieser Wirkungen bergen erhebliche Risiken und benötigen eine bewusste, aufgeklärte Gestaltung, bei der Informatiker/innen naturgemäß eine besondere Rolle spielen -- oder jedenfalls spielen sollten.
+
+Als Themenbereiche werden wir beispielsweise betrachten, wie die Computerisierung unsere Privatsphäre beeinflusst, Wirtschaft und Gesellschaft im Ganzen, unsere Sicherheit und unser Arbeitsumfeld. Davor steht eine konzeptionelle Einführung, was es bedeutet Orientierungswissen zusätzlich zu Verfügungswissen zu erlangen und wie man damit umgehen sollte: kritisch mitdenken und sich in die Gestaltung der Technik einmischen.
