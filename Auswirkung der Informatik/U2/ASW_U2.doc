@@ -1,0 +1,63 @@
+Übungsgruppe: Qianli Wang und Nazar Sopiha
+
+Aufgabe 2-1:
+a)Verfügungswissen um technische Systeme zu bauen
+Orientierungswissen um sozio-technische Systeme zu bauen
+
+b) Technikfolgenabschätzung beantwortet die Frage “Welche Wirkung werde ich kriegen?” mittels Orientierungswissen.
+Technikfolgenbewertung beantwortet die Fragen “Was halte ich von dieser Wirkung? Würde ich dann die Technik verwenden?” mittels persönlicher oder gesellschaftlicher Wertsetzungen.
+
+c) Dijkstra meinte, dass man Korrektheit des Problems und Freundlichkeit des formulierten Problems trennen soll. 
+Nein. Die Spezifikationen und Implementierungen (Lösungen) sind oft eng miteinander verbunden. Außerdem können technische Spezialisten besser verstehen, welche Wirkungen welche Technik haben kann.
+
+Aufgabe 2-2:
+c)   Absätze werden von dem Anfang von “Informed Community” gerechnet.
+
+1. (Absatz 2)(negative)
+Phänomen: Giving everyone a voice may fragment our shared sense of reality.  
+(Unrealistic - Not everyone wants to share his own opinion. And those local opinions will not change the “shared sense of reality”, because it is based on some popular perspectives.)
+Bewertung:  Giving everyone a voice has historically been a very positive force for public discourse because it increases the diversity of ideas shared.
+Handlungsoperation:
+Amplify the good effects and mitigate the bad - to continue increasing diversity while strengthening our common understanding
+Erwartete Folge:
+Our community should create the greatest positive impact on the world.
+(Mixed - big communities can have both positive and negative impacts. It depends on many factors and can not be easily predicted. Even if idea of creation is good - as a simple example Nobel’s dynamite)
+
+2.  (Absatz 4)(positive)
+Phänomen: Social media already provides more diverse viewpoints than traditional media ever has.
+(Plausible. Social  media is much harder to control and that’s why it has almost no censor compared with traditional media. And social media is more accessible so that people can easily attend discussions and write comments about their thoughts.)
+Bewertung: Social media are able to provide people with diverse perspectives.
+
+3.(Absatz 5, 7)(negative)
+Phänomen: Polarization   
+(Plausible - critical thinking is not the easiest approach. People tend to choose one site and stay there)
+Bewertung: People tend to see just alternate perspectives, not trying to understand a more complete picture. (5) If it continues and common understanding gets lost, then even if we eliminate all misinformation, people would just emphasize different sets of facts to fit their polarized opinions (7)
+Handlungsoperation:  let people see different views, to give them information from the whole range of perspectives, so that they can decide by themselves which view is right.
+Erwartete Folge: Sources will provide not only polarized opinions, but a complete range of perspectives, so that content will naturally surface more
+(Unrealistic - it’s hard to believe that people will choose the whole range of perspectives and think more before drawing a conclusion. If most people wanted to have a wider range of perspectives,  they could find it even now)
+
+4. (Absatz 6)(negative)
+Phänomen: Misinformation, outright hoax content on Facebook.
+(Plausible. It’s clear that on the Internet there is always some information not so accurate or wrong in general, because someone will post some extreme information to catch others’ eyes without considering whether the information is suitable or not.)
+Bewertung: Some information, that could be seen as misinformation, is actually satire or people’s actual opinion. It is sometimes hard to distinguish them. And we should take them seriously. 
+Handlungsoperation: Our approach will focus less on banning misinformation, and more on surfacing additional perspectives and information, including that fact checkers dispute an item's accuracy.
+Erwartete Folge: people will be able to share their opinion and perspectives, even if others think they're wrong. Misinformation will be eliminated.
+(Mixed - As Zuckerberg said, it is hard to distinguish between fake and real opinion or satire. That is why it is very hard to eliminate fakes and leave “strange” or not popular opinions
+
+5. (Absätze 8 9) (negative)
+Phänomen: Sensationalism  (Realistic - people love sensations and most of them don’t want to check the given information properly)  
+Bewertung: Sensationalism moves people away from balanced nuanced opinions towards polarized extremes.
+Handlungsoperation: 1) By taking this into account for pieces of content, and going forward signals like sharing instantly after reading of heading will identify sensational publishers as well.
+2) Get to know each other as whole people instead of just opinions.
+
+Erwartete Folge: 1) A more informed community can be built. (Plausible.  Less fake sensation = more informer) 2) If we connect with people about what we have in common, it’s easier to have dialogue about what we disagree on. (Plausible. Psychology works that way) 
+
+6. (Absatz 15)(positive)
+Wirkung: People can more easily get connected with others.
+(Plausible. With the development of technology, the WLAN and smartphones are getting more and more popular and affordable, which allows people to connect with others easily without going out.)
+Handlungsoperation: Tools are improved so that people have the power to share their experience.
+
+e) Fakes:For example we can show other users identified fakes with a special mark to help them understand how fakes are made, so they can more easily detect other misinformation further. And we can add feedback button “Fake”. If some article has a lot of “fake”-evaluations, it should be checked by Facebook authorities. 
+
+
+Polarization: There are always people, who tend to think polarized, left- or right-leaning. Idea is to detect them and to warn other users. We can add flags for users, something like “polarized”. If some users have a lot of those votes, others see that they have these types of thinking.
