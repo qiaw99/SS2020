@@ -1,0 +1,55 @@
+\input{src/header}											% bindet Header ein (WICHTIG)
+\usepackage{graphicx}
+
+\newcommand{\dozent}{Claudia Müller-Birn und Barry Linnert}					% <-- Names des Dozenten eintragen
+\newcommand{\tutor}{Florian Alex}						% <-- Name eurer Tutoriun eintragen
+\newcommand{\tutoriumNo}{Übung 05}				% <-- Nummer im KVV nachschauen
+\newcommand{\ubungNo}{1}									% <-- Nummer des Übungszettels
+\newcommand{\veranstaltung}{Nichtsequentielle und verteilte Programmierung}	% <-- Name der Lehrveranstaltung eintragen
+\newcommand{\semester}{SoSe 2020}						% <-- z.B. SoSo 17, WiSe 17/18
+\newcommand{\studenten}{Qianli Wang und Nazar Sopiha}			% <-- Hier eure Namen eintragen
+
+% /////////////////////// BEGIN DOKUMENT /////////////////////////
+\begin{document}
+\input{src/titlepage}										% erstellt die Titelseite
+
+
+% /////////////////////// Aufgabe 1 /////////////////////////
+\section{Aufgabe: Korrektheit \hfill (10 Punkte)}
+ \textbf{Begriff(Korrektheit):} Die Korrektheit eines Programms wird angenommen, wenn gesagt wird, dass das Programm in Bezug auf eine Spezifikation korrekt ist. Die funktionale Korrektheit bezieht sich auf das Eingabe-Ausgabe-Verhalten des Programms. 
+
+ \textbf{Vor dem Programmieren} soll man zuerst ein Konzept entwickeln und an die Logik des Programms denken. Außerdem soll man Eindrücke haben, wie alle verwendeten Operationen auf Endeffekte der Ausgaben auswirken kann.
+
+ \textbf{Während des Programmierens} soll man das Programm mit richtiger Syntax der verwendeten Programmiersprache implementieren und auf die Kleinigkeiten achten, z.B. Coding Style (Tabs oder Leerzeichen überall eindeutig benutzen) oder gewisse Probleme von Befehle vermeiden (z.B. bei malloc() können Memory Leaks entstehen u.s.w.). Darüber hinaus soll man auch Sequenz aller Operationen im Programm richtig einordnen, damit sie am Ende richtig ausgeführt werden können.
+
+ \textbf{Nach dem Programmieren(bei der Ausführung):}\\
+1. Compiler oder Interpreter soll richtig den Code kompilieren oder interpretieren. \\
+2. Linker soll ein Speicherabbild erstellen mit Maschinenbefehlen (ein ausführbarer Maschinencode) und initialisierten Daten.\\
+3. Betriebssystem konfiguriert Ausführungsumgebung erfolgreich und Prozess außerhalb des verknüpften Speicherabbildes.\\
+4. Hardware soll die Maschinenbefehle in der Ausführungsumgebung problemlos ausführen und Instruction Pointer automatisch inkrementieren.
+
+ \textbf{Vor dem Anfang bis zum Ende sollte man immer an mögliche Fehler denken, den Code richtig testen und Warnings betrachten und eventuell richtig Debuggen, damit am Ende das erwartete Ergebnis rauskommen kann.}
+
+
+% ///////////////////// Aufgabe 2 ///////////////////
+\section{Aufgabe: Programmierung in C \hfill (12 Punkte)}
+ \textbf{Betriebssysteme:} Linux (als OS und ind Virtual Box) und Windows\\
+ \textbf{Compiler:} gcc (ubuntu 7.5.0-3ubuntu1~18.04)\\ 
+ \textbf{Text editor:} Sublime Text, Notepad++, Qt\\
+ \textbf{Fehlersuche:} Warnings von Texteditor(für Syntaxfehler) oder printf()-Funktion, damit wir überprüfen können, dass die Zwischenergebnisse richtig sind. \\
+ \textbf{Fehlerbehandlung:} Terminal als Ausgaben auch für Warnings und Errors, Qt-Console, Qt-Debugging mit Stopp Punkten.\\\\
+\textbf{Ergebnisse der Ausführung:}\\
+\includegraphics[scale=0.4]{00.png}\\
+\includegraphics[scale=0.4]{01.png}\\
+\includegraphics[scale=0.4]{02.png}\\
+\includegraphics[scale=0.4]{04.png}\\
+
+
+% ///////////////////// Aufgabe 3 ///////////////////
+\section{Aufgabe: Performance \hfill (8 Punkte)}
+1. \textbf{Für Android Programming} sollte man Interne (Logik wie Serveranfrage) und externe (wie User Interface Frame aufzeichnen) Prozesse unterscheiden, damit der User während Ausführung der schweren Befehle immer noch mit dem App kommunizieren kann.\\\\
+2. \textbf{Sortieralgorithmen:} Insbesonder für Mergesort. Man kann mehrere Prozesse zur Verfügung stehen, dann kann man beim Teilen und Herrschen Zeit gewinnen, indem mehrere Prozesse eigene Listen bekommen und Listen sortieren(in denen die sortierten Elementen “ausgetauscht” werden).
+
+
+% /////////////////////// END DOKUMENT /////////////////////////
+\end{document}
