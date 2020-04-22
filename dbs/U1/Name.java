@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 
 public class Name{
 	public static void main(String[] args) {
+		// Get the user input with the help of System input stream reader 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
 		String str = null; 
 		System.out.println("What's your name? "); 
