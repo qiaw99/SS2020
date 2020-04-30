@@ -1,5 +1,3 @@
-// My first project
-
 fn main() {
 	let s1 = String::from("hello");
 	let len = calculate_length_2(&s1);
