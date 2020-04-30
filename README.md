@@ -6,4 +6,5 @@ ALP IV： https://www.mi.fu-berlin.de/en/inf/groups/hcc/teaching/summer-term-202
 MPI-tutorial: https://github.com/wesleykendall/mpitutorial
 
 Rust-totorial: https://wiki.jikexueyuan.com/project/rust-primer/
+
 https://kaisery.github.io/trpl-zh-cn
