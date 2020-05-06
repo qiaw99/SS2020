@@ -4,8 +4,9 @@
 #include <unistd.h>
 
 int *sides;
-char on_bridge;
+char *on_bridge;
 int num_threads;
+int accident = 0;
 
 int *tickets;
 char *enter;
@@ -13,7 +14,7 @@ char *enter;
 int lock(long tid){
     int i, max = 0;
     enter[tid] = 1;
-    on_bridge = 1;
+    on_bridge[tid] = 1;
 
     for (i = 0; i < num_threads; i++) {
         if (max < tickets[i])
@@ -25,7 +26,7 @@ int lock(long tid){
         if (i != tid) {
             while (enter[i]);
         }
-        while ((tickets[i] != 0) && (on_bridge == 1) &&
+        while ((tickets[i] != 0) && 
           ((tickets[tid] > tickets[i]) ||
             ((tickets[tid] == tickets[i]) &&
               (tid > i))));
@@ -34,7 +35,7 @@ int lock(long tid){
 
 int unlock(long tid){
     tickets[tid] = 0;
-    on_bridge = 0;
+    on_bridge[tid] = 0;
     return 0;
 }
 
@@ -44,6 +45,7 @@ void *cross_bridge(void *threadid){
     for(int i = 0; i < 10000; i++){
         if(on_bridge == 1){
             printf("Unfall!\n");
+            accident++;
         }else{
             printf("Kein Problem!\n");
         }
@@ -51,7 +53,7 @@ void *cross_bridge(void *threadid){
         lock(tid);
 
         // Zeit auf der Brücke simulieren   
-        sleep(1);
+        //sleep(1);
 
         // Auf der anderen Seite erreichen
         if(sides[tid] == 0){
@@ -84,7 +86,7 @@ int main(int argc, char *argv[]){
     sides = (int *)malloc(sizeof(int) * num_threads);
 
     // 0 bedeutet, dass kein Auto auf der Brücke ist.
-    on_bridge = 0;
+    on_bridge = (char *)malloc(sizeof(char) * num_threads);
 
     //creating threads
     for(t = 0; t < num_threads; t++){
@@ -100,9 +102,10 @@ int main(int argc, char *argv[]){
     for(t = 0; t < num_threads; t++){
         pthread_join(threads[t], NULL);
     }
-    
+    printf("accident %d\n", accident);
     free(tickets);
     free(enter);
-
+    free(on_bridge);
+    free(sides);
     pthread_exit(NULL); 
 }
