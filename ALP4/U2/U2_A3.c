@@ -3,8 +3,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
-int *sides;
-char *on_bridge;
+char on_bridge;
 int num_threads;
 int accident = 0;
 
@@ -14,7 +13,6 @@ char *enter;
 int lock(long tid){
     int i, max = 0;
     enter[tid] = 1;
-    on_bridge[tid] = 1;
 
     for (i = 0; i < num_threads; i++) {
         if (max < tickets[i])
@@ -31,11 +29,11 @@ int lock(long tid){
             ((tickets[tid] == tickets[i]) &&
               (tid > i))));
     }
+	return 0;
 }
 
 int unlock(long tid){
-    tickets[tid] = 0;
-    on_bridge[tid] = 0;
+    tickets[tid] = 0;  
     return 0;
 }
 
@@ -51,18 +49,12 @@ void *cross_bridge(void *threadid){
         }
 
         lock(tid);
-
+    	on_bridge = 1;
+        
         // Zeit auf der Brücke simulieren   
-        //sleep(1);
+        //sleep(1/1000000000);
 
-        // Auf der anderen Seite erreichen
-        if(sides[tid] == 0){
-            sides[tid] = 1;
-        }else{
-            sides[tid] = 0;
-        }
-
-        printf("I am thread %ld and to the %d side\n", tid, sides[tid]);
+        on_bridge = 0;
         unlock(tid);
     }
     pthread_exit(NULL);
@@ -81,12 +73,9 @@ int main(int argc, char *argv[]){
     // memory reallocation
     tickets = realloc(tickets, num_threads * sizeof(int));
     enter = realloc(enter, num_threads * sizeof(char));
-    
-    // initialize the array
-    sides = (int *)malloc(sizeof(int) * num_threads);
 
     // 0 bedeutet, dass kein Auto auf der Brücke ist.
-    on_bridge = (char *)malloc(sizeof(char) * num_threads);
+    on_bridge = 0;
 
     //creating threads
     for(t = 0; t < num_threads; t++){
@@ -103,9 +92,9 @@ int main(int argc, char *argv[]){
         pthread_join(threads[t], NULL);
     }
     printf("accident %d\n", accident);
+    
     free(tickets);
     free(enter);
-    free(on_bridge);
-    free(sides);
+
     pthread_exit(NULL); 
 }
