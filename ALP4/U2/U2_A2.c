@@ -14,10 +14,11 @@ int accident = 0;
 int lock(long tid){
 	_lock[tid] = 1;
 	while(_lock[NUM_THREADS - tid - 1]){
-		_lock[tid] = 0;
-		sleep(1);
-		_lock[tid] = 1;
-		
+		if(favoured != tid){
+			_lock[tid] = 0;
+			while(favoured != tid);
+			_lock[tid] = 1;
+		}
 	}
 	return 0;
 }
@@ -25,7 +26,6 @@ int lock(long tid){
 int unlock(long tid){
 	favoured = NUM_THREADS - 1 - tid;
 	_lock[tid] = 0;
-	on_bridge = 0;
 	return 0;
 }
 
@@ -37,8 +37,8 @@ void *cross_bridge(void *threadid){
 
 		// kontrollieren, ob es auf der Brücke Auto gibt.
 		if(on_bridge == 1){
-		  printf("Unfall!\n");
-			accident++;
+			printf("Unfall!\n");
+      accident++;
 		}else{
 			printf("Kein Problem!\n");
 		}
@@ -51,7 +51,9 @@ void *cross_bridge(void *threadid){
 
 		// Auf der anderen Seite erreichen
 		sides[tid] = NUM_THREADS - tid - 1;
-		printf("I am thread %ld and to the %d side\n", tid, sides[tid]);
+    
+		on_bridge = 0;
+    //printf("I am thread %ld and to the %d side\n", tid, sides[tid]);
 		
 		unlock(tid);
 	}
@@ -87,6 +89,6 @@ int main(int argc, char *argv){
 	for(t = 0; t < NUM_THREADS; t++){
 		pthread_join(threads[t], NULL);
 	}
-	printf("accident %d\n", accident);
+  printf("accident: %d \n", accident);
 	pthread_exit(NULL);
 }
