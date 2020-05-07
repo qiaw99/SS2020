@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+   <head>
+		<meta charset="utf-8">
+		</meta>
+		<title>Apple Aktie</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<!-- JQuery -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<!-- Bootstrap tooltips -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+		<!-- Bootstrap core JavaScript -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<!-- MDB core JavaScript -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
+   </head>
+   <body>
+      <div class="container">
+         <div class="table-responsive">
+            <div id="linechart"></div>
+				<canvas width="600" height="400" id="lineChart" style = "max-width : 600px; max-height: 400px"></canvas>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
+
+<script>
+$(document).ready(function () {
+	$.ajax({
+		url: "apple.csv",
+		dataType: "text",
+		success: function(data) {
+			prepare_data(data);
+		}
+	});
+	
+	function prepare_data(data) {
+		var date = new Array();
+		var deep_num = new Array();
+		var high_num = new Array();
+		var end_num = new Array();
+		var line_data = data.split(/\r?\n/);
+			for (var count = 0; count < line_data.length; count++) {
+				var cell_data = line_data[count].split(", ");
+				for (var cell_count = 0; cell_count < cell_data.length; cell_count++) {
+					value = cell_data[cell_count]
+					if (cell_count === 0) {
+						date.push(value)
+					} 
+					else if (cell_count === 1) {
+						deep_num.push(value)
+					}
+					else if (cell_count === 2) {
+						high_num.push(value)
+					}
+					else if (cell_count === 3) {
+						end_num.push(value)
+					}
+				}
+			}
+		paint_graph(date, deep_num, high_num, end_num);
+	}
+	
+	function paint_graph(date, deep_num, high_num, end_num) {
+		formatted_date = format_date(date);
+		var ctxL = document.getElementById("lineChart").getContext('2d');
+		var myLineChart = new Chart(ctxL, {
+			type: 'line',
+			data: {
+				labels: formatted_date,
+				datasets: [{
+						label: "Deep",
+						data: deep_num,
+						backgroundColor: [
+							'rgba(0, 0, 0, 0)',
+						],
+						borderColor: [
+							'rgba(240, 52, 52, 1)',
+						],
+						borderWidth: 2
+					},
+					{
+						label: "High",
+						data: high_num,
+						backgroundColor: [
+							'rgba(0, 0, 0, 0)',
+						],
+						borderColor: [
+							'rgba(42, 187, 155, 1)',
+						],
+						borderWidth: 2
+					},
+					{
+						label: "End",
+						data: end_num,
+						backgroundColor: [
+							'rgba(0, 0, 0, 0)',
+						],
+						borderColor: [
+							'rgba(240, 255, 0, 1)',
+						],
+						borderWidth: 5
+					}
+				]
+			},
+			options: {
+				responsive: true
+			}
+
+		});
+	}
+	function format_date(date){
+		for (var count = 0; count < date.length; count++) {
+			//taking only day
+			date[count] = date[count].split(".")[0];
+		}
+		return date;
+	}
+}); 
+	
+	
+
+</script>
