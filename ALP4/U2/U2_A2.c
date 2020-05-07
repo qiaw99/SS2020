@@ -11,6 +11,7 @@ char on_bridge;
 char _lock[2];
 int accident = 0;
 
+// lock fuction from lecture
 int lock(long tid){
 	_lock[tid] = 1;
 	while(_lock[NUM_THREADS - tid - 1]){
