@@ -1,13 +1,13 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include<pthread.h>
+#include <pthread.h>
 #include <unistd.h>
 
 #define NUM_THREADS 2
 
 int sides[NUM_THREADS];
 char on_bridge;
-
+int accident = 0;
 
 void *cross_bridge(void *threadid){
 	long tid = (long)threadid;
@@ -15,13 +15,16 @@ void *cross_bridge(void *threadid){
 	for(int i = 0; i < 10000; i++){
 		if(on_bridge == 1){
 			printf("Unfall!\n");
+			accident++;
+		}else{
+			printf("Kein Problem!\n");
 		}
 
 		// Fahren auf der Brücke
 		on_bridge = 1;
 
 		// Zeit auf der Brücke simulieren	
-		sleep(1);
+		//sleep(1);
 
 		// Auf der anderen Seite erreichen
 		sides[tid] = NUM_THREADS - tid - 1;
@@ -56,6 +59,8 @@ int main(int argc, char *argv){
 	for(t = 0; t < NUM_THREADS; t++){
 		pthread_join(threads[t], NULL);
 	}
+
+	printf("Accident: %d\n", accident);
 
 	pthread_exit(NULL);
 }
