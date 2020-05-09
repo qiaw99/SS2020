@@ -10,6 +10,7 @@ int accident = 0;
 int *tickets;
 char *enter;
 
+// lock aus der VL
 int lock(long tid){
     int i, max = 0;
     enter[tid] = 1;
