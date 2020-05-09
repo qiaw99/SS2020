@@ -52,7 +52,7 @@ void *cross_bridge(void *threadid){
 
 		// Auf der anderen Seite erreichen
 		sides[tid] = NUM_THREADS - tid - 1;
-    
+
 		on_bridge = 0;
     //printf("I am thread %ld and to the %d side\n", tid, sides[tid]);
 		
