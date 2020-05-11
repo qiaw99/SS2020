@@ -42,6 +42,8 @@ void *cross_bridge(void *threadid){
     long tid = (long)threadid;
     
     for(int i = 0; i < 10000; i++){
+        lock(tid);
+
         if(on_bridge == 1){
             printf("Unfall!\n");
             accident++;
@@ -49,11 +51,10 @@ void *cross_bridge(void *threadid){
             printf("Kein Problem!\n");
         }
 
-        lock(tid);
     	on_bridge = 1;
         
         // Zeit auf der Brücke simulieren   
-        //sleep(1/1000000000);
+        sleep(0.0000000000000000000000000001);
 
         on_bridge = 0;
         unlock(tid);
