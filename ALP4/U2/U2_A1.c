@@ -5,7 +5,6 @@
 
 #define NUM_THREADS 2
 
-int sides[NUM_THREADS];
 char on_bridge;
 int accident = 0;
 
@@ -24,10 +23,10 @@ void *cross_bridge(void *threadid){
 		on_bridge = 1;
 
 		// Zeit auf der Brücke simulieren	
-		//sleep(1);
+		sleep(0.00000000000001);
 
-		// Auf der anderen Seite erreichen
-		sides[tid] = NUM_THREADS - tid - 1;
+		on_bridge = 0;
+
 	}
 
 	pthread_exit(NULL);
@@ -37,10 +36,6 @@ int main(int argc, char *argv){
 	pthread_t threads[NUM_THREADS];
 	int rc;
 	long t;
-
-	// initialize the array
-	sides[0] = 0;
-	sides[1] = 1;
 
 	// 0 bedeutet, dass kein Auto auf der Brücke ist.
 	on_bridge = 0;
