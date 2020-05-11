@@ -48,7 +48,7 @@ void *cross_bridge(void *threadid){
 		on_bridge = 1;
 
 		// Zeit auf der Brücke simulieren	
-		//sleep(1);
+		sleep(0.00000000000000000000000000000001);
 
 		// Auf der anderen Seite erreichen
 		sides[tid] = NUM_THREADS - tid - 1;
