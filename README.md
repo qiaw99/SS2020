@@ -10,3 +10,6 @@ Rust-totorial: https://wiki.jikexueyuan.com/project/rust-primer/
 https://kaisery.github.io/trpl-zh-cn
 
 k-means-algorithm: https://blog.csdn.net/huangfei711/article/details/78480078
+
+Aporiori Algorithm: https://www.geeksforgeeks.org/apriori-algorithm/
+https://www.softwaretestinghelp.com/apriori-algorithm/
