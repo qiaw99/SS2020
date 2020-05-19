@@ -8,3 +8,5 @@ MPI-tutorial: https://github.com/wesleykendall/mpitutorial
 Rust-totorial: https://wiki.jikexueyuan.com/project/rust-primer/
 
 https://kaisery.github.io/trpl-zh-cn
+
+k-means-algorithm: https://blog.csdn.net/huangfei711/article/details/78480078
