@@ -13,3 +13,5 @@ k-means-algorithm: https://blog.csdn.net/huangfei711/article/details/78480078
 
 Aporiori Algorithm: https://www.geeksforgeeks.org/apriori-algorithm/
 https://www.softwaretestinghelp.com/apriori-algorithm/
+
+Group by: https://zhuanlan.zhihu.com/p/58639733
