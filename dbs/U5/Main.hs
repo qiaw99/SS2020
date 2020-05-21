@@ -8,13 +8,13 @@ main :: IO ()
 main = do
   -- connection to db
   conn <- connect defaultConnectInfo {
-      connectUser = "testuser",
-      connectPassword = "password",
-      connectDatabase = "testdb"
+      connectUser = "postgres",
+      connectPassword = "qianli99",
+      connectDatabase = "postgres"
     }
 
   -- execute query
-  result <- query_ conn "SELECT name FROM people"
+  result <- query_ conn "SELECT NAME FROM COMPANY"
   -- unpack the data
   let names = map fromOnly (result :: [Only String])
   print names
