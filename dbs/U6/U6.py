@@ -5,7 +5,8 @@ url = "https://www.heise.de/thema/https"
 
 def getTitles():
 	titles = []
-
+	
+	# there is 5 pages and the first page has no suffix
 	for pages in range (6):
 		if(pages == 0):
 			html = requests.get(url).text
@@ -17,11 +18,11 @@ def getTitles():
 
 		# aside tag that contains articles
 		#aside = soup.find('aside', class_='recommendations')
-        # divs that contains articles
+        	# divs that contains articles
 		#divs = aside.findAll('div', class_='recommendation')
 		# headers containing article headers
 		#headers = aside.findAll('header')
-        # extract string in header tag & append to titles
+        	# extract string in header tag & append to titles
 		#titles += map(lambda x: x.string.strip(), headers)
 	return titles
 
