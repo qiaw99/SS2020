@@ -15,3 +15,5 @@ Aporiori Algorithm: https://www.geeksforgeeks.org/apriori-algorithm/
 https://www.softwaretestinghelp.com/apriori-algorithm/
 
 Group by: https://zhuanlan.zhihu.com/p/58639733
+
+Preserve functional dependency: https://www.geeksforgeeks.org/data-base-dependency-preserving-decomposition/
