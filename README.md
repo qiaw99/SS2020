@@ -17,3 +17,5 @@ https://www.softwaretestinghelp.com/apriori-algorithm/
 Group by: https://zhuanlan.zhihu.com/p/58639733
 
 Preserve functional dependency: https://www.geeksforgeeks.org/data-base-dependency-preserving-decomposition/
+
+B+ Tree: https://www.youtube.com/watch?v=5Lhs57UNius
