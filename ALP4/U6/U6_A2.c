@@ -59,7 +59,7 @@ int search_biggest_position(){
 	int temp_max = record[0];
 
 	for(int i = 0; i < num_place; i++){
-		if(temp_max <= record[i]){
+		if(temp_max < record[i]){
 			temp_pos = i;
 			temp_max = record[i];
 		}
