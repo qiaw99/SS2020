@@ -6,6 +6,8 @@
 
 struct timespec max_timeout;
 
+int round = 0;
+
 int num_con, num_pro, num_place;
 
 struct monitors{
@@ -14,11 +16,11 @@ struct monitors{
 	pthread_cond_t is_full;
 	int last;
 	int *buffer;
+	void *threadid;
 };
 
-struct monitors *monitor;
 
-void put(void *threadid, int i){
+void put(struct monitors *monitor, int i){
     pthread_mutex_lock(& monitor -> mutex);
     
     while (monitor -> last == num_place){
@@ -26,8 +28,9 @@ void put(void *threadid, int i){
     }
     
     monitor -> buffer[monitor -> last] = i;
-    printf("Producer %ld puts %d at %d \n", (long)threadid, monitor -> buffer[monitor -> last], monitor -> last);
+    printf("Producer puts %d at %d, round %d \n", monitor -> buffer[monitor -> last], monitor -> last, round);
     monitor -> last++;
+    round ++;
     
     // release the signal
     pthread_cond_broadcast(&monitor -> is_empty);
@@ -35,19 +38,21 @@ void put(void *threadid, int i){
     pthread_mutex_unlock(&monitor -> mutex);
 }
 
-int take(void *threadid){
+int take(struct monitors *monitor){
     pthread_mutex_lock(&monitor -> mutex);
 
     while (monitor -> last == 0){
         if (pthread_cond_timedwait(&monitor -> is_empty, &monitor -> mutex, &max_timeout) != 0){
-            printf("Consumer %ld Timedout\n", (long)threadid);
+            printf("Consumer Timedout, round %d\n", round);
             pthread_mutex_unlock(&monitor -> mutex);
+            round ++;
             return -1;
         }
     }
 
-    printf("Consumer %ld takes %d from %d\n", (long)threadid, monitor -> buffer[(monitor -> last - 1)], monitor -> last - 1);
+    printf("Consumer takes %d from %d, round %d\n", monitor -> buffer[(monitor -> last - 1)], monitor -> last - 1, round);
     monitor -> last--;
+    round ++;
 
     pthread_cond_broadcast(&monitor -> is_full);
     
@@ -55,16 +60,16 @@ int take(void *threadid){
     return 0;
 }
 
-void *producer(void *threadid){
+void *producer(struct monitors *monitor){
     for (int i = 0; i < 1000; i++){
-        put(threadid, i);
+        put(monitor, i);
     }
     pthread_exit(NULL);
 }
 
-void *consumer(void *threadid){
+void *consumer(struct monitors *monitor){
     while (1){
-        if (take(threadid) != 0){
+        if (take(monitor) != 0){
             break;
         }
     }
@@ -97,16 +102,17 @@ int main(void){
     pthread_t consumers[num_con];
     pthread_t producers[num_pro];
 
-    monitor = malloc(sizeof(struct monitors));
+    // initialize the struct
+    struct monitors *monitor = malloc(sizeof(struct monitors));
     monitor -> buffer = calloc(num_place, sizeof(int));
     monitor -> last = 0;
     pthread_mutex_init(&monitor -> mutex, NULL);
-    pthread_cond_init(& monitor -> is_full, NULL);
-    pthread_cond_init(& monitor -> is_empty, NULL);
+    pthread_cond_init(&monitor -> is_full, NULL);
+    pthread_cond_init(&monitor -> is_empty, NULL);
 
     // create threads
     for (t = 0; t < num_con; t ++){
-        rc = pthread_create(&consumers[t], NULL, consumer, (void *)t);
+        rc = pthread_create(&consumers[t], NULL, consumer, (void *)monitor);
         if (rc){
             printf("ERROR: return code from pthread_create () is %d\n", rc);
             exit(-1);
@@ -114,7 +120,7 @@ int main(void){
     }
 
     for (t = 0; t < num_pro; t ++){
-        rc = pthread_create(&producers[t], NULL, producer, (void *)t);
+        rc = pthread_create(&producers[t], NULL, producer, (void *)monitor);
         if (rc){
             printf("ERROR: return code from pthread_create () is %d\n", rc);
             exit(-1);
@@ -132,11 +138,13 @@ int main(void){
     }
 
     // release condition variables
-    pthread_cond_destroy(& monitor -> is_empty);
+    pthread_cond_destroy(&monitor -> is_empty);
     pthread_cond_destroy(&monitor -> is_full);
 
     // release the mutex
     pthread_mutex_destroy(&monitor -> mutex);
+
+    // free memory
     free(monitor -> buffer);
     free(monitor);
 
