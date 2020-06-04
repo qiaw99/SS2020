@@ -76,6 +76,7 @@ int take(struct monitors *monitor){
 		if (pthread_cond_timedwait(&monitor -> is_empty, &monitor -> mutex, &max_timeout) != 0){
 			printf("Consumer Timedout, round %d\n", round);
 			pthread_mutex_unlock(&monitor -> mutex);
+			round ++;
 			return -1;
 		}
 	}
