@@ -5,11 +5,10 @@
 #include "timer.h"
 
 #define DIM 2  /* Two-dimensional system */
-#define X 0    /* x-coordinate subscript */
-#define Y 1    /* y-coordinate subscript */
+#define X 0    
+#define Y 1    
 
-const double G = 6.673e-11;  /* Gravitational constant. */
-                             /* Units are m^3/(kg*s^2)  */
+const double G = 6.673e-11;  
 
 // define vector
 typedef double vect_t[DIM];  
