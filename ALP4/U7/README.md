@@ -8,5 +8,5 @@ for each timestep t {
     for each particle i
         update position and velocity of i using F = ma
     if (output step) Output new positions and velocities
- }
+}
 ```
