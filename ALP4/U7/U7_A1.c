@@ -19,7 +19,7 @@ struct particle_s {
    vect_t v;  
 };
 
-void Usage(char* prog_name) {
+void usage(char* prog_name) {
    printf("usage: %s <number of particles> <number of timesteps>\n", prog_name);
    printf("   <size of timestep> <output frequency>\n");
    printf("   <g|i>\n");
@@ -29,9 +29,11 @@ void Usage(char* prog_name) {
    exit(-1);
 }
 
-void get_args(int argc, char* argv[], int* n_p, int* n_steps_p, 
-      double* delta_t_p, int* output_freq_p, char* g_i_p) {
-   if (argc != 6) Usage(argv[0]);
+void get_args(int argc, char* argv[], int* n_p, int* n_steps_p, double* delta_t_p, int* output_freq_p, char* g_i_p) {
+   if (argc != 6){
+      usage(argv[0]);
+   }
+
    *n_p = strtol(argv[1], NULL, 10);
    *n_steps_p = strtol(argv[2], NULL, 10);
    *delta_t_p = strtod(argv[3], NULL);
@@ -40,13 +42,13 @@ void get_args(int argc, char* argv[], int* n_p, int* n_steps_p,
 
    // handle inputs
    if (*n_p <= 0 || *n_steps_p < 0 || *delta_t_p <= 0 || (*g_i_p != 'g' && *g_i_p != 'i')){
-      Usage(argv[0]);
+      usage(argv[0]);
    }
 }
 
  // get mass, position and velocity
 void get_init_cond(struct particle_s curr[], int n) {
-   printf("mass, x-coord, y-coord, x-velocity, y-velocity\n");
+   printf("mass, x-coord, y-coord, x-velocity, y-velocity?\n");
 
    for (int part = 0; part < n; part ++) {
       scanf("%lf", &curr[part].m);
@@ -59,22 +61,18 @@ void get_init_cond(struct particle_s curr[], int n) {
 
 // default initialize, put all particles on the x axis and give speed with y axis
 void gen_init_cond(struct particle_s curr[], int n) {
-   int part;
-
    // referenced to earth
    double mass = 6.0e24;
    double gap = 1.0e5;
    double speed = 10.0e5;
 
-   // to decide the speed direction of the particle
-   srandom(1);
-
-   for (part = 0; part < n; part ++) {
+   for (int part = 0; part < n; part ++) {
       curr[part].m = mass;
       curr[part].s[X] = part * gap;
       curr[part].s[Y] = 0.0;
       curr[part].v[X] = 0.0;
 
+      // to render different directions
       if (part % 2 == 0)
          curr[part].v[Y] = speed;
       else
@@ -84,10 +82,9 @@ void gen_init_cond(struct particle_s curr[], int n) {
 
 // output the state of particles
 void output_state(double time, struct particle_s curr[], int n) {
-   int part;
    printf("%.2f\n", time);
    printf("       Postion x    Postion y   Speed x     Speed y\n");
-   for (part = 0; part < n; part++) {
+   for (int part = 0; part < n; part++) {
       printf("%3d %10.3e ", part, curr[part].s[X]);
       printf("  %10.3e ", curr[part].s[Y]);
       printf("  %10.3e ", curr[part].v[X]);
@@ -168,9 +165,11 @@ int main(int argc, char* argv[]) {
    int n_steps;                // number of timesteps        
    int step;                   // current step               
    int part;                   // current particle           
-   int output_freq;            // frequency of output        
+   int output_freq;            // frequency of output      
+
    double delta_t;             // size of timestep           
-   double t;                   // current Time               
+   double t;                   // current Time         
+
    struct particle_s* curr;    // current state of system    
    vect_t* forces;             // forces on each particle    
    char g_i;                  
@@ -230,7 +229,7 @@ int main(int argc, char* argv[]) {
    
    GET_TIME(finish);
 
-   printf("Passed ime = %e seconds\n", finish - start);
+   printf("Passed time = %e seconds\n", finish - start);
 
    free(curr);
    free(forces);
