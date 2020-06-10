@@ -111,7 +111,7 @@ void compute_force(int part, vect_t forces[], struct particle_s curr[], int n) {
 
          mg = -G * curr[part].m * curr[k].m;
 
-         // torque
+         // decomposite the craft
          fact = mg / pow(len, 3);
          f_part_k[X] *= fact;
          f_part_k[Y] *= fact;
