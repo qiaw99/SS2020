@@ -4,7 +4,7 @@
 #include <math.h>
 #include "timer.h"
 
-#define DIM 2  /* Two-dimensional system */
+#define DIM 2  // 2D
 #define X 0    
 #define Y 1    
 
