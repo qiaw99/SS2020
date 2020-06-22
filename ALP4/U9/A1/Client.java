@@ -14,7 +14,7 @@ public class Client {
 	 * @throws IOException
 	 */
 	public static void main(String args[]) throws IOException { 
-		int PORT = 12346;
+		int PORT = 12345;
 		String HOST = "127.0.0.1";
 		
 		Socket socket = new Socket(HOST, PORT); 
