@@ -56,7 +56,8 @@ public class Client extends JFrame implements ActionListener {
         public void run() {
             try {
                 while (true) {
-                    playback();
+                    new Test(Test.path);
+                    //playback();
                 }
             } catch (Exception ex) {
             }
@@ -145,8 +146,7 @@ public class Client extends JFrame implements ActionListener {
         String name = JOptionPane.showInputDialog(null, "Enter your name :", "Username", JOptionPane.PLAIN_MESSAGE);
         String servername = "localhost";
         try {
-            new Client(name, servername);
-            new Test(Test.path);
+            new Client(name, servername);         
         } catch (Exception ex) {
             out.println("Error --> " + ex.getMessage());
         }
