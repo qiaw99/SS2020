@@ -8,6 +8,7 @@
 
 ![](http://2.bp.blogspot.com/-t88k0zLYMwA/UGMuUovjwzI/AAAAAAAAAaU/OA8Qoov2hZA/s1600/CompositeDesignPatternGeneric.gif)
 
+![](http://4.bp.blogspot.com/-hxzn_ztVv5g/UGNJlLm1HPI/AAAAAAAAAbI/gkr2g8P-oP0/s1600/CompositeDesignPatternExample.gif)
 # Elements:
 ## Component
 - declares interface for objects in composition.
